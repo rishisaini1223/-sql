@@ -1,0 +1,71 @@
+-- declaration block 
+-- agar hame koi variable , koi cursor , exception define krna  to 
+-- usse declaration block m define karege
+
+
+-- compalsary
+/*
+begin 
+    (executable)
+end
+*/
+
+-- exception 
+DECLARE
+    var int:=12;
+    l_counter NUMBER := 1;
+    v_name varchar(20);
+    v_salary hr.employees.salary%type;
+    v_rec hr.employees%rowtype;
+begin 
+    var:=14;
+    if (mod(var,2)=0) THEN
+        dbms_output.PUT_LINE('hey hello world' || '-' || 'yash');
+    else
+        dbms_output.PUT_LINE('hey hello world' || '-' || var);
+    end if;
+
+
+
+  WHILE l_counter <= 5 LOOP -- Check condition before each iteration
+    DBMS_OUTPUT.PUT_LINE('Counter is: ' || l_counter);
+    l_counter := l_counter + 1; -- Manual increment is required
+  END LOOP;
+
+
+    /*
+    cursor - it is a pointer which provide the control over the sql query
+
+    */
+
+    select first_name into v_name from hr.employees where employee_id = 102;
+    select salary into v_salary from hr.employees where employee_id = 102;
+    dbms_output.put_line(v_name || '-' || v_salary);    
+
+    /*
+    %rowtype - it is a attribute which is used to create a variable of 
+    record type 
+    - in this record type we create a column with its datatype 
+    record datatype- record is a datastructure which is used to store different 
+    type of data structure.
+     
+     acid property,optimise sql query
+    */
+
+    select * into v_rec from hr.employees where employee_id = 102;
+    dbms_output.PUT_LINE(v_rec.first_name || '-' || v_rec.hire_date);
+
+    /*
+    -- create a plsql program to find out nuber is a armstromg. 
+    -- you have been given a number is prime or not.
+    -- using while loop find out the lcm of two numbers.
+
+    learning
+    - what is cursor and type of cursor.
+    */
+
+
+
+
+
+END;
