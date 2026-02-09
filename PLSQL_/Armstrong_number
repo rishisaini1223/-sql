@@ -1,0 +1,24 @@
+DECLARE
+    n_num number :=123;
+    temp number;
+    s number:=0;
+    re number;
+    n_len number;
+BEGIN
+    temp :=n_num;
+    n_len:=length(to_char(n_num));
+    while n_num >0 loop
+        re := mod(n_num,10);
+        s := s+power(re,n_len);
+        n_num:= trunc(n_num/10);
+    end LOOP;
+
+    if s = temp then
+        dbms_output.put_line('it is an armstrong number');
+    else
+        dbms_output.put_line('it is not an armstrong number');
+    end if;
+end;
+
+
+
