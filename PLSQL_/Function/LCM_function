@@ -1,0 +1,30 @@
+
+CREATE OR REPLACE FUNCTION find_lcm(
+    num1 IN NUMBER,
+    num2 IN NUMBER
+)
+RETURN NUMBER
+AS
+    lcm_val NUMBER;
+    greater NUMBER;
+BEGIN
+    -- Find greater number
+    IF num1 > num2 THEN
+        greater := num1;
+    ELSE
+        greater := num2;
+    END IF;
+
+    lcm_val := greater;
+
+    LOOP
+        IF MOD(lcm_val, num1) = 0 
+           AND MOD(lcm_val, num2) = 0 THEN
+            EXIT;
+        END IF;
+
+        lcm_val := lcm_val + greater;
+    END LOOP;
+
+    RETURN lcm_val;
+END;
