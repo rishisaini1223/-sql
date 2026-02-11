@@ -1,0 +1,6 @@
+DECLARE
+    n INT;
+BEGIN
+    n :=mytest();
+    DBMS_OUTPUT.put_line('calling function '|| n);
+end;
