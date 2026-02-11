@@ -1,0 +1,10 @@
+create or replace procedure second_procedure(salary in int) as
+begin
+    salary:=5;
+    dbms_output.put_line('second procedure value' || salary);
+    first_procedure;
+    for i in 1..salary loop
+        dbms_output.put_line(i);
+    end loop;
+end;
+
