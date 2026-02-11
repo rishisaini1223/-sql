@@ -1,0 +1,8 @@
+declare
+    x int := 10;
+    y int := 0;
+begin
+    second_procedure(x,y);
+    dbms_output.put_line('return newsalary is ' || y);
+
+end;
