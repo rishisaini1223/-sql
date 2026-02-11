@@ -1,0 +1,5 @@
+create or replace procedure first_procedure as
+begin
+    dbms_output.put_line('first procedure')
+
+end;
