@@ -1,0 +1,8 @@
+create or replace procedure second_procedure(salary in int,
+newsalary out int) as
+begin
+    salary:=5;
+    dbms_output.put_line('second procedure value' || salary);
+    newsalary:=salary+500;
+    
+end;
