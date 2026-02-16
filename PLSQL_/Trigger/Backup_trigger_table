@@ -1,0 +1,14 @@
+create table emp_cp2 as
+select emp_id, first_name, salary from hr.employees;
+
+create table employees_audit (
+    audit_id number generated always as identity,
+    emp_id number,
+    old_salary number,
+    new_salary number,
+    changed_by varchar(100),
+    changed_on date,
+    action varchar(10)
+);
+
+insert into emp_cp2 values(2, 'rahul', 3000);
