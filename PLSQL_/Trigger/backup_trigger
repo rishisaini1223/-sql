@@ -1,0 +1,23 @@
+create or replace trigger trg_employees_audit
+after insert or update or delete on emp_cp2
+for each row
+begin
+    if inserting then
+        insert into employees_audit
+        (emp_id, old_salary, new_salary, changed_by, changed_on, action)
+        values
+        (:new.emp_id, null, :new.salary, user, sysdate, 'insert');
+
+    elsif updating then
+        insert into employees_audit
+        (emp_id, old_salary, new_salary, changed_by, changed_on, action)
+        values
+        (:new.emp_id, :old.salary, :new.salary, user, sysdate, 'update');
+    
+    elsif deleting then
+        insert into employees_audit
+        (emp_id, old_salary, new_salary, changed_by, changed_on, action)
+        values
+        (:new.emp_id,:old.salary, :new.salary, user, sysdate, 'delete');
+    end if;
+end;
