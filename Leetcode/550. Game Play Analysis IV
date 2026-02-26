@@ -1,0 +1,8 @@
+with cte as(
+    select player_id, min(event_date) as first_login from activity group by player_id
+)
+select round(count(distinct a.player_id)/ (select count(distinct  player_id) from activity), 2)
+as fraction
+from activity as a join cte as c
+where a.player_id = c.player_id 
+and a.event_date = date_add(c.first_login, interval 1 day)
